@@ -9,9 +9,10 @@ canvas=createCanvas(800, 800);
 canvas.mousePressed(startPath);
   canvas.parent('myContainer');
   canvas.mouseReleased(endPath);
- // var saveButton=("#saveButton");
- // saveButton.mousePressed(saveDrawing);
-  button=createButton("save");
+ 
+   button=createButton("save");
+   clear=createButton("clear");
+   clear.mousePressed(clearDrawing);
 }
 function startPath(){
   isDrawing=true;
@@ -35,9 +36,8 @@ function draw() {
   if(button.mousePressed){
     var saveref=database.ref('drawings');
     saveref.push(drawings);
-
-
-  }
+ }
+ 
    stroke(255);
   strokeWeight(4);
   noFill();
@@ -49,9 +49,9 @@ function draw() {
     }
       endShape();
 }
-  
+
 }
-function saveDrawing(){
+function clearDrawing(){
+drawings=[];
 
-  }
-
+}
